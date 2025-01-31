@@ -73,31 +73,37 @@ NODEJS() {
 JAVA() {
   echo Installing Maven
   dnf install maven -y &>>log_file
+  Status_Print $?
   APP_PREREQ
   echo Installing Dependencies
   mvn clean package &>>log_file
+  Status_Print $?
   echo Moving the $app_name.jar file location
   mv target/$app_name-1.0.jar $app_name.jar &>>log_file
-
+  Status_Print $?
   SYSTEMD_SETUP
 }
 
 PYTHON() {
   echo Installing Python
   dnf install python3 gcc python3-devel -y &>>log_file
+  Status_Print $?
   APP_PREREQ
   echo Installing Dependencies
   pip3 install -r requirements.txt &>>log_file
+  Status_Print $?
   SYSTEMD_SETUP
 }
 
 GOLANG() {
   echo Installing GoLang
   dnf install golang -y &>>log_file
+  Status_Print $?
   APP_PREREQ
   echo Installing Dependencies
   go mod init dispatch &>>log_file
   go get &>>log_file
   go build &>>log_file
+  Status_Print $?
   SYSTEMD_SETUP
 }

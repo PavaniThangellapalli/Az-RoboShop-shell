@@ -1,10 +1,17 @@
-cp rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo
+echo Copying RabbitMQ repo file
+cp rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo &>>log_file
+Status_Print $?
 
-dnf install rabbitmq-server -y
+echo Install RabbitMQ
+dnf install rabbitmq-server -y &>>log_file
+Status_Print $?
 
-systemctl enable rabbitmq-server
-systemctl start rabbitmq-server
+echo Start RabbbitMQ service
+systemctl enable rabbitmq-server &>>log_file
+systemctl start rabbitmq-server &>>log_file
+Status_Print $?
 
-rabbitmqctl add_user roboshop roboshop123
-rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
-
+echo Adding User
+rabbitmqctl add_user roboshop roboshop123 &>>log_file
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>log_file
+Status_Print $?

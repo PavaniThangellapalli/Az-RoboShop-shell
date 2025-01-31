@@ -1,11 +1,17 @@
 source ./common.sh
 app_name=catalogue
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo
-
 NODEJS
 
-dnf install mongodb-mongosh -y
+echo Copying the MongoDB repo file
+cp $dir_path/mongo.repo /etc/yum.repos.d/mongo.repo &>>log_file
+Status_Print $?
 
-mongosh --host mongodb-dev.pavanidevops.online </app/db/master-data.js
+echo Installing MongoDB
+dnf install mongodb-mongosh -y &>>log_file
+Status_Print $?
+
+echo Loading the Master Data
+mongosh --host mongodb-dev.pavanidevops.online </app/db/master-data.js &>>log_file
+Status_Print $?
 
