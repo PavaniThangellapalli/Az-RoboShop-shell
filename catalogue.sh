@@ -21,5 +21,5 @@ systemstl start catalogue
 
 dnf install mongodb-mongosh -y
 
-mongosh --host MONGODB-SERVER-IPADDRESS </app/db/master-data.js
+mongosh --host mongodb-dev.pavanidevops.online </app/db/master-data.js
 
