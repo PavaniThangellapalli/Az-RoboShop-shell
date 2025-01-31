@@ -28,7 +28,10 @@ SYSTEMD_SETUP() {
 
 APP_PREREQ() {
     echo Adding Application User
-    useradd roboshop &>>log_file
+    id roboshop &>>log_file
+    if [ $? -eq 1 ];then
+      useradd roboshop &>>log_file
+    fi
     Status_Print $?
     echo Removing the app directoy
     rm -rf /app &>>log_file
