@@ -10,6 +10,8 @@ cp user.service /etc/systemd/system/user.service
 rm -rf /app
 mkdir /app
 
+rm -f /tmp/user.zip
+
 curl -L -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip
 cd /app
 unzip /tmp/user.zip

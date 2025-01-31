@@ -10,6 +10,8 @@ useradd roboshop
 rm -rf /app
 mkdir /app
 
+rm -f /tmp/catalogue.zip
+
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
 cd /app
 unzip /tmp/catalogue.zip

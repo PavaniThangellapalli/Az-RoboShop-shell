@@ -7,6 +7,8 @@ mkdir /app
 
 cp payment.service /etc/systemd/system/payment.service
 
+rm -f /tmp/payment.zip
+
 curl -L -o /tmp/payment.zip https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip
 cd /app
 unzip /tmp/payment.zip
