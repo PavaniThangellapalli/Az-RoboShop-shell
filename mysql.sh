@@ -1,3 +1,4 @@
+source ./common.sh
 echo Installing MySQL
 dnf install mysql-server -y &>>log_file
 Status_Print $?

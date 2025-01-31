@@ -1,3 +1,5 @@
+source ./common.sh
+
 echo Copying RabbitMQ repo file
 cp rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo &>>log_file
 Status_Print $?
