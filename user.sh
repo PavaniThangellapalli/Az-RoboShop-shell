@@ -1,21 +1,8 @@
-dnf module disable nodejs -y
-dnf module enable nodejs:20 -y
-
-dnf install nodejs -y
-
-useradd roboshop
+source ./common.sh
+app_name=user
 
 cp user.service /etc/systemd/system/user.service
-
-rm -rf /app
-mkdir /app
-
-rm -f /tmp/user.zip
-
-curl -L -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip
-cd /app
-unzip /tmp/user.zip
-npm install
+NODEJS
 
 systemctl daemon-reload
 systemctl enable user
