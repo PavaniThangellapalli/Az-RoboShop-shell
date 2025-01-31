@@ -1,8 +1,5 @@
 source ./common.sh
-
-
-
-
+app_name=shipping
 
 dnf install mysql -y
 
