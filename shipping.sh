@@ -1,24 +1,8 @@
-dnf install maven -y
+source ./common.sh
 
-useradd roboshop
 
-cp shipping.service /etc/systemd/system/shipping.service
 
-rm -rf /app
-mkdir /app
 
-rm -f /tmp/shipping.zip
-
-curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip
-cd /app
-unzip /tmp/shipping.zip
-
-mvn clean package
-mv target/shipping-1.0.jar shipping.jar
-
-systemctl daemon-reload
-systemctl enable shipping
-systemctl start shipping
 
 dnf install mysql -y
 
