@@ -15,12 +15,10 @@ SYSTEMD_SETUP() {
     echo Copying the Application service file
     cp $dir_path/$app_name.service /etc/systemd/system/$app_name.service &>> log_file
     Status_Print $?
-    echo Loading the service
+    echo Loading, Enabling and starting the service the service
     systemctl daemon-reload &>>log_file
-    Status_Print $?
-    echo Enabling and starting the service
     systemctl enable $app_name &>>log_file
-    systemstl restart $app_name &>>log_file
+    systemstl start $app_name &>>log_file
     Status_Print $?
 }
 
