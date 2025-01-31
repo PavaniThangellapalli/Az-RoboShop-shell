@@ -1,3 +1,4 @@
+source ./common.sh
 echo Disable nginx
 dnf module disable nginx -y &>>log_file
 Status_Print $?
