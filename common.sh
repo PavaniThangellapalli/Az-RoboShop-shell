@@ -18,11 +18,9 @@ SYSTEMD_SETUP() {
     echo Loading the service
     systemctl daemon-reload &>>log_file
     Status_Print $?
-    echo Enabling the service
+    echo Enabling and starting the service
     systemctl enable $app_name &>>log_file
-    Status_Print $?
-    echo Starting the service
-    systemstl start $app_name &>>log_file
+    systemstl restart $app_name &>>log_file
     Status_Print $?
 }
 
